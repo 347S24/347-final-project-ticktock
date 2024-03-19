@@ -271,7 +271,7 @@ tags
 dump.rdb
 
 ### Project template
-tictactoe/media/
+ticktock/media/
 
 .pytest_cache/
 

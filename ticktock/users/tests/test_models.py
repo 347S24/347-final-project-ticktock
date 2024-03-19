@@ -1,4 +1,4 @@
-from tictactoe.users.models import User
+from ticktock.users.models import User
 
 
 def test_user_get_absolute_url(user: User):

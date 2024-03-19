@@ -1,7 +1,7 @@
 import pytest
 
-from tictactoe.users.models import User
-from tictactoe.users.tests.factories import UserFactory
+from ticktock.users.models import User
+from ticktock.users.tests.factories import UserFactory
 
 
 @pytest.fixture(autouse=True)

@@ -6,13 +6,12 @@ from django.utils.translation import gettext_lazy as _
 
 from .forms import UserAdminChangeForm
 from .forms import UserAdminCreationForm
-from .models import User
+from .models import User, Event
 
 if settings.DJANGO_ADMIN_FORCE_ALLAUTH:
     # Force the `admin` sign in process to go through the `django-allauth` workflow:
     # https://docs.allauth.org/en/latest/common/admin.html#admin
     admin.site.login = login_required(admin.site.login)  # type: ignore[method-assign]
-
 
 @admin.register(User)
 class UserAdmin(auth_admin.UserAdmin):
@@ -37,3 +36,5 @@ class UserAdmin(auth_admin.UserAdmin):
     )
     list_display = ["username", "name", "is_superuser"]
     search_fields = ["name"]
+
+admin.site.register(Event)

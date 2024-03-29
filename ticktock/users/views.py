@@ -1,12 +1,14 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.messages.views import SuccessMessageMixin
 from django.urls import reverse
+from django.views import generic
 from django.utils.translation import gettext_lazy as _
 from django.views.generic import DetailView
 from django.views.generic import RedirectView
 from django.views.generic import UpdateView
 
-from ticktock.users.models import User
+
+from ticktock.users.models import User, Event
 
 
 class UserDetailView(LoginRequiredMixin, DetailView):
@@ -43,3 +45,7 @@ class UserRedirectView(LoginRequiredMixin, RedirectView):
 
 
 user_redirect_view = UserRedirectView.as_view()
+
+class EventListView(generic.ListView):
+    model = Event
+    context_object_name = "event_list"

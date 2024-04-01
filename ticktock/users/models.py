@@ -27,14 +27,3 @@ class User(AbstractUser):
         """
         return reverse("users:detail", kwargs={"username": self.username})
     
-    
-class Event(models.Model):
-    name = models.CharField(max_length=100)
-    description = models.CharField(max_length=100)
-    start_time = models.DateTimeField()
-    end_time = models.DateTimeField()
-
-    def __str__(self):
-        """String for representing the Model object."""
-        return self.name
-    

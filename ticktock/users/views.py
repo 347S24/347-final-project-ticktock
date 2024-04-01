@@ -8,7 +8,7 @@ from django.views.generic import RedirectView
 from django.views.generic import UpdateView
 
 
-from ticktock.users.models import User, Event
+from ticktock.users.models import User
 
 
 class UserDetailView(LoginRequiredMixin, DetailView):
@@ -45,7 +45,3 @@ class UserRedirectView(LoginRequiredMixin, RedirectView):
 
 
 user_redirect_view = UserRedirectView.as_view()
-
-class EventListView(generic.ListView):
-    model = Event
-    context_object_name = "event_list"

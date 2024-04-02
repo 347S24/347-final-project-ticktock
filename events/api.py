@@ -11,6 +11,7 @@ class EventOut(Schema):
     start_time: datetime.date
     end_time: datetime.date
 
+    
 from typing import List
 
 @api.get("/events", response=List[EventOut])

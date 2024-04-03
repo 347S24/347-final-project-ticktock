@@ -2,5 +2,21 @@
 {% block content %}
     <h1>Home</h1>
     <p>Welcome to the TickTock, a milestone countdown app!</p>
+    <p>
+    {% if user.is_authenticated %}
+        <!--Get the events assocaited with the current user-->
+            <p>Events:</p>
+            <ul>
+            {% for event in events %}
+                <li>{{ event.name }} - {{ event.date }}</li>
+            {% endfor %}
+            </ul>
+        {% else %}
+            <p>You have not created any events yet. Create one now!</p>
+        {% endif %}
+    {% else %}
+        Click here to <a href="{% url 'account_signup' %}">create an account</a> or <a href="{% url 'account_login' %}">log in</a>.
+    {% endif %}
+    </p>
 {% endblock %}
 

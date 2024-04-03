@@ -18,4 +18,3 @@ class HomeView(generic.TemplateView):
 class AboutView(generic.TemplateView):
     template_name = "pages/about.html"
 
-

@@ -59,7 +59,7 @@ class EventDetailView(generic.DetailView):
     model = Event
     context_object_name = "event-detail"
     template_name = "events/event_detail.html"
-    
+
 event_detail_view = EventDetailView.as_view()
 
 class HomeView(generic.TemplateView):

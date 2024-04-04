@@ -4,13 +4,7 @@
     <p>Welcome to the TickTock, a milestone countdown app!</p>
     <p>
     {% if user.is_authenticated %}
-        <!--Get the events assocaited with the current user-->
-            <p>Events:</p>
-            <ul>
-            {% for event in events %}
-                <li>{{ event.name }} - {{ event.date }}</li>
-            {% endfor %}
-            </ul>
+        You are logged in as {{ user.username }}. <a href="{% url 'account_logout' %}">Log out</a>.
     {% else %}
         Click here to <a href="{% url 'account_signup' %}">create an account</a> or <a href="{% url 'account_login' %}">log in</a>.
     {% endif %}

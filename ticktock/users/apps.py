@@ -11,3 +11,4 @@ class UsersConfig(AppConfig):
     def ready(self):
         with contextlib.suppress(ImportError):
             import ticktock.users.signals  # noqa: F401
+            

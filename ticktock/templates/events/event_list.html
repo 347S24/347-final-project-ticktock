@@ -1,13 +1,15 @@
 {% extends "base.html" %}
 
-{% block title %}We Got Events!{% endblock %}
 {% block content %}
-  <h1>Event List</h1>
+  <h1>Events:</h1>
   {% if event_list %}
     <ul>
       {% for event in event_list %}
       <li>
-        {{ event.name }}
+        {{ event.name }} <br>
+        {{ event.description }} <br>
+        {{ event.start_date }} <br>
+        {{ event.end_date }} <br>
       </li>
       {% endfor %}
     </ul>
@@ -15,3 +17,4 @@
     <p>No Events!</p>
   {% endif %}
 {% endblock %}
+

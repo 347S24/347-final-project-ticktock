@@ -1,9 +1,9 @@
+import uuid
 from django.contrib.auth.models import AbstractUser
 from django.db.models import CharField
 from django.urls import reverse
 from django.utils.translation import gettext_lazy as _
 from django.db import models
-from events.models import Event
 
 
 class User(AbstractUser):
@@ -26,3 +26,16 @@ class User(AbstractUser):
 
         """
         return reverse("users:detail", kwargs={"username": self.username})
+    
+    # Create your models here.
+class Event(models.Model):
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    name = models.CharField(max_length=100)
+    description = models.CharField(max_length=100)
+    start_time = models.DateTimeField(null=True, blank=True)
+    end_time = models.DateTimeField(null=True, blank=True)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+        
+    def __str__(self):
+        """String for representing the Model object."""
+        return self.name

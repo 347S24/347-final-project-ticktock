@@ -24,3 +24,9 @@ def list_events(request):
     qs = Event.objects.all().filter(is_subevent=False)
     return qs
 
+@api.delete("/event/{event_id}")
+def delete_event(request, event_id: str):
+    event_id = str(event_id)
+    event = get_object_or_404(Event, id=event_id)
+    event.delete()
+    return {"success": True}

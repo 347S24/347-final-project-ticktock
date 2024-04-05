@@ -21,6 +21,6 @@ def get_event(request, event_id: str):
 
 @api.get("/events", response=List[EventOut])
 def list_events(request):
-    qs = Event.objects.all()
+    qs = Event.objects.all().filter(is_subevent=False)
     return qs
 

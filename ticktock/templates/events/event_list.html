@@ -5,11 +5,25 @@
   {% if event_list %}
     <ul>
       {% for event in event_list %}
+      {% if not event.is_subevent %}
       <li>
         {{ event.name }} <br>
         {{ event.description }} <br>
         {{ event.start_time }} - {{ event.end_time }}<br>
+        {% if event.subevents.all %}
+        <i>Subevents:</i>
+        <ul>
+        {% for subevent in event.subevents.all %}
+        <li>
+        {{ subevent.name }} <br>
+        {{ subevent.description }} <br>
+        {{ subevent.start_time }} - {{ subevent.end_time }}<br>
+        {% endfor %}
+        </li>
+        </ul>
+        {% endif %}
       </li>
+      {% endif %}
       {% endfor %}
     </ul>
   {% else %}

@@ -39,4 +39,3 @@ class UserAdmin(auth_admin.UserAdmin):
     
     
 admin.site.register(Event)
-

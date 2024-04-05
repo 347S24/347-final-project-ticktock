@@ -4,5 +4,11 @@
   <p>{{ event.description }}</p>
   <p>{{ event.start_date }}</p>
   <p>{{ event.end_date }}</p>
+  {{for event in event.subevents}}
+    <p>{{ subevent.name }}</p>
+    <p>{{ subevent.description }}</p>
+    <p>{{ subevent.start_date }}</p>
+    <p>{{ subevent.end_date }}</p>
+  {{endfor}}
 {% endblock %}
 

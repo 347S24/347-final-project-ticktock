@@ -30,3 +30,14 @@ def delete_event(request, event_id: str):
     event = get_object_or_404(Event, id=event_id)
     event.delete()
     return {"success": True}
+
+@api.put("/event/{event_id}")
+def update_event(request, event_id: str, name: str, description: str, start_time: datetime.datetime, end_time: datetime.datetime):
+    event_id = str(event_id)
+    event = get_object_or_404(Event, id=event_id)
+    event.name = name
+    event.description = description
+    event.start_time = start_time
+    event.end_time = end_time
+    event.save()
+    return {"success": True}

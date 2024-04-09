@@ -38,3 +38,17 @@ class Event(models.Model):
         """String for representing the Model object."""
         return self.name
     
+class EventSequence(models.Model):
+    events = models.ManyToManyField(Event)
+
+    def __str__(self):
+        """String for representing the Model object."""
+        return ', '.join([event.name for event in self.events.all()])
+    
+    def add_event(self, event):
+        self.events.add(event)
+        self.events = self.events.all().order_by('start_time')
+
+
+    def remove_event(self, event):
+        self.events.remove(event)

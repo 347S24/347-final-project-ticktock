@@ -23,7 +23,7 @@ function App() {
           <img src={djangoLogo} className="logo" alt="Django logo" />
         </a>
       </div>
-      <h1>Vite + React + Django</h1>
+      <h1>Vite + React + Django + Aarushi</h1>
       <div className="card">
         <button onClick={() => setCount((count) => count + 1)}>
           count is {count}

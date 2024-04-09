@@ -16,4 +16,3 @@ class HomeView(LoginRequiredMixin, TemplateView):
             "username": self.request.user.username,
         })
         return context_data
-

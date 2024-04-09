@@ -46,6 +46,28 @@ class UserRedirectView(LoginRequiredMixin, RedirectView):
 
 user_redirect_view = UserRedirectView.as_view()
 
+
+# Create your views here.
 class EventListView(generic.ListView):
     model = Event
     context_object_name = "event_list"
+    template_name = "events/event_list.html"
+    
+event_list_view = EventListView.as_view()
+
+class EventDetailView(generic.DetailView):
+    model = Event
+    context_object_name = "event-detail"
+    template_name = "events/event_detail.html"
+
+event_detail_view = EventDetailView.as_view()
+
+class HomeView(generic.TemplateView):
+    template_name = "pages/home.html"
+
+home_view = HomeView.as_view()
+
+class AboutView(generic.TemplateView):
+    template_name = "pages/about.html"
+    
+AboutView = AboutView.as_view()

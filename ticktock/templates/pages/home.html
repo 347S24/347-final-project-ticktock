@@ -1,3 +1,13 @@
 {% extends "base.html" %}
-
+{% block content %}
+    <h1>Home</h1>
+    <p>Welcome to the TickTock, a milestone countdown app!</p>
+    <p>
+    {% if user.is_authenticated %}
+        You are logged in as {{ user.username }}. <a href="{% url 'account_logout' %}">Log out</a>.
+    {% else %}
+        Click here to <a href="{% url 'account_signup' %}">create an account</a> or <a href="{% url 'account_login' %}">log in</a>.
+    {% endif %}
+    </p>
+{% endblock %}
 

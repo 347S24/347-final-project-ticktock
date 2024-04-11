@@ -3,6 +3,7 @@ import reactLogo from './assets/react.svg'
 import djangoLogo from './assets/django.svg'
 import viteLogo from './assets/vite.svg'
 import './App.css'
+import Progress_bar from './ProgressBar'
 
 // function App({username}) {
 function App() {
@@ -18,7 +19,7 @@ function App() {
 
           <main>
             <h1>Welcome to Ticktock, the <em>ultimate</em> progress tracker</h1>
-            <p>Here is where a tracker would technically be.</p>
+            <Progress_bar bgcolor="#f11946" progress="50" height="50" />
           </main>
 
           <footer>Ticktock Inc.</footer>

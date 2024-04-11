@@ -38,9 +38,22 @@ function App() {
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
       </p> */
-      
-      <h1> Aarushi and Alex do a thing</h1>
-      
+
+        <div>
+          <title>Home page for Ticktock</title>
+          <header>Ticktock</header>
+
+          <main>
+            <h1>Welcome to Ticktock, the <em>ultimate</em> progress tracker</h1>
+            <p>Here is where a tracker would technically be.</p>
+          </main>
+
+          <foot>Ticktock Inc.</foot>
+
+        </div>
+
+
+
       }
     </>
   )

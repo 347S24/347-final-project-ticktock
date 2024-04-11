@@ -1,4 +1,38 @@
-#root {
+div {
+  display: grid;
+  grid-template-areas:
+      "header"
+      "main"
+      "footer";
+}
+
+header, footer {
+  position: fixed;
+  top: 0;
+  text-align: left;
+  background-color: mediumpurple;
+  font-family: 'Courier New', Courier, monospace;
+  width: 100%;
+}
+
+h1 {
+  position: top;
+  padding-left: 2rem;
+  font-size: 3rem;
+  font-family: 'Courier New', Courier, monospace;
+  color:blueviolet;
+}
+
+p {
+  font-family: 'Courier New', Courier, monospace;
+  padding-left: 2rem;
+  font-size: 1.5rem;
+  color: mediumpurple;
+  
+}
+
+
+/* #root {
   max-width: 1280px;
   margin: 0 auto;
   padding: 2rem;
@@ -39,4 +73,4 @@
 
 .read-the-docs {
   color: #888;
-}
+} */

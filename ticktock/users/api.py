@@ -41,3 +41,9 @@ def update_event(request, event_id: str, name: str, description: str, start_time
     event.end_time = end_time
     event.save()
     return {"success": True}
+
+@api.post("/event")
+def add_event(name: str, description: str, start_time: datetime.datetime, end_time: datetime.datetime):
+    event = Event(name=name, description=description, start_time=start_time, end_time=end_time)
+    event.save()
+    return event

@@ -4,6 +4,7 @@ import djangoLogo from './assets/django.svg'
 import viteLogo from './assets/vite.svg'
 import './App.css'
 import Progress_bar from './ProgressBar'
+import Fetch from './Fetch'
 
 // function App({username}) {
 function App() {
@@ -16,7 +17,6 @@ function App() {
       {
         <div className="container">
           <header>Ticktock</header>
-
           <main>
             <h1>Welcome to Ticktock, the <em>ultimate</em> progress tracker</h1>
             <Progress_bar bgcolor="#f11946" progress="50" height="50" />

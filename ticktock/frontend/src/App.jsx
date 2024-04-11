@@ -19,7 +19,7 @@ function App() {
           <header>Ticktock</header>
           <main>
             <h1>Welcome to Ticktock, the <em>ultimate</em> progress tracker</h1>
-            <Progress_bar bgcolor="#f11946" progress="50" height="50" />
+            <Progress_bar bgcolor="#f11946" height="50" start_time="2021-10-01T00:00:00Z" end_time="2021-10-01T00:00:10Z" />
           </main>
 
           <footer>Ticktock Inc.</footer>

@@ -1,7 +1,23 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
  
-const Progress_bar = ({bgcolor, progress,height}) => {
+const Progress_bar = ({bgcolor, height, start_time, end_time}) => {
+    const [progress, setProgress] = useState(0);
+    const [start, setStart] = useState(new Date(start_time));
+    const [end, setEnd] = useState(new Date(end_time));
+    const [current, setCurrent] = useState(new Date(start_time));
     
+    useEffect(() => {
+      if (current.getTime() < end.getTime()) {
+        const total = end.getTime() - start.getTime();
+        const interval = setInterval(() => {
+          const newCurrent = new Date(current.getTime() + 1000);
+          setCurrent(newCurrent);
+          setProgress(((newCurrent.getTime() - start.getTime()) / total) * 100);
+        }, 1000);
+        return () => clearInterval(interval);
+      }
+    }, [current, start, end]);
+
     const Parentdiv = {
         height: height,
         width: '100%',
@@ -14,7 +30,7 @@ const Progress_bar = ({bgcolor, progress,height}) => {
         height: '100%',
         width: `${progress}%`,
         backgroundColor: bgcolor,
-       borderRadius:40,
+        borderRadius:40,
         textAlign: 'right'
       }
      

@@ -1,26 +1,36 @@
-div {
-  display: grid;
-  grid-template-areas:
-      "header"
-      "main"
-      "footer";
+/* App.css */
+
+body {
+  font-family: 'Courier New', Courier, monospace;
+  margin: 1rem;
+  padding: 1rem;
 }
 
-header, footer {
-  position: fixed;
-  top: 0;
+.container {
+  display: grid;
+  grid-template-areas:
+    "header"
+    "main"
+    "footer";
+  min-height: 100vh;
+}
+
+header {
+  grid-area: header;
+  height: 4rem;
+  color: white;
   text-align: left;
   background-color: mediumpurple;
   font-family: 'Courier New', Courier, monospace;
-  width: 100%;
+}
+
+main {
+  grid-area: main;
 }
 
 h1 {
-  position: top;
-  padding-left: 2rem;
-  font-size: 3rem;
   font-family: 'Courier New', Courier, monospace;
-  color:blueviolet;
+  color: blueviolet;
 }
 
 p {
@@ -28,8 +38,20 @@ p {
   padding-left: 2rem;
   font-size: 1.5rem;
   color: mediumpurple;
-  
 }
+
+footer {
+  grid-area: footer;
+  color: white;
+  padding: 1rem;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  text-align: left;
+  background-color: mediumpurple;
+  font-family: 'Courier New', Courier, monospace;
+}
+
 
 
 /* #root {

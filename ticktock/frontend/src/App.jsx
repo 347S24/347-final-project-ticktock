@@ -3,8 +3,7 @@ import reactLogo from './assets/react.svg'
 import djangoLogo from './assets/django.svg'
 import viteLogo from './assets/vite.svg'
 import './App.css'
-import Progress_bar from './ProgressBar'
-import Fetch from './Fetch'
+
 
 // function App({username}) {
 function App() {
@@ -18,8 +17,8 @@ function App() {
         <div className="container">
           <header>Ticktock</header>
           <main>
-            <h1>Welcome to Ticktock, the <em>ultimate</em> progress tracker</h1>
-            <Progress_bar bgcolor="#f11946" height="50" start_time="2021-10-01T00:00:00Z" end_time="2021-10-01T00:00:10Z" />
+            <h1>Welcome to Ticktock, the <em>ultimate</em> progress tracker.</h1>
+            <p>Here is where a tracker would technically be.</p>
           </main>
 
           <footer>Ticktock Inc.</footer>

@@ -288,3 +288,4 @@ SOCIALACCOUNT_FORMS = {"signup": "ticktock.users.forms.UserSocialSignupForm"}
 
 # Your stuff...
 # ------------------------------------------------------------------------------
+CORS_ALLOW_ALL_ORIGINS = True

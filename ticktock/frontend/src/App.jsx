@@ -3,13 +3,14 @@ import reactLogo from './assets/react.svg'
 import djangoLogo from './assets/django.svg'
 import viteLogo from './assets/vite.svg'
 import './App.css'
+import Fetch from './Fetch'
 
 function App() {
   // State for event form
   const [eventName, setEventName] = useState('');
   const [description, setDescription] = useState('');
-  const [startTime, setStartTime] = useState('');
-  const [endTime, setEndTime] = useState('');
+  const [startTime, setStartTime] = useState(new Date());
+  const [endTime, setEndTime] = useState(new Date());
 
   // State for a counter (from the first version of App)
   const [count, setCount] = useState(0);
@@ -25,8 +26,9 @@ function App() {
 
     // Posting data to the backend
     try {
-      const response = await fetch('http://127.0.0.1:8000/users/api/events', {
-        method: 'POST',
+      console.log(JSON.stringify(eventData))
+      const response = await fetch('http://127.0.0.1:8000/users/api/event', {
+        method: "POST",
         headers: {
           'Content-Type': 'application/json',
         },
@@ -53,8 +55,7 @@ function App() {
             <input type="datetime-local" value={endTime} onChange={e => setEndTime(e.target.value)} placeholder="End Time" required />
             <button type="submit">Submit Event</button>
           </form>
-          <button onClick={() => setCount(count + 1)}>Click me to increase count: {count}</button>
-          <p>Here is where a tracker would technically be.</p>
+          <Fetch></Fetch>
         </main>
         <footer>Ticktock Inc.</footer>
       </div>

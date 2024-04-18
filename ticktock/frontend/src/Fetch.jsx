@@ -1,4 +1,6 @@
 import { useState, useEffect } from 'react';
+import ProgressBar from './ProgressBar';
+
 const Fetch = () => {
   const [events, setEvents] = useState([]);
   useEffect(() => {
@@ -18,8 +20,7 @@ const Fetch = () => {
         <div key={event.id}>
           <h1>{event.title}</h1>
           <p>{event.description}</p>
-          <p>{event.start_time}</p>
-          <p>{event.end_time}</p>
+          <ProgressBar start_time="{event.start_time}" end_time="{event.end_time}" bgcolor="green" height="20px" />
         </div>
       ))}
     </div>

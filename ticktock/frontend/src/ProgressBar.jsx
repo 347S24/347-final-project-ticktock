@@ -1,10 +1,18 @@
 import React, { useState, useEffect } from 'react'
  
-const Progress_bar = ({bgcolor, height, start_time, end_time}) => {
+const ProgressBar = ({bgcolor, height, start_time, end_time}) => {
     const [progress, setProgress] = useState(0);
     const [start, setStart] = useState(new Date(start_time));
     const [end, setEnd] = useState(new Date(end_time));
     const [current, setCurrent] = useState(new Date(start_time));
+  
+    /**If the start time was in the past, update the progress and the current time to be correct */
+    if (current.getTime() < start.getTime()) {
+      const total = end.getTime() - start.getTime();
+      const newCurrent = new Date(start.getTime());
+      setCurrent(newCurrent);
+      setProgress(((newCurrent.getTime() - start.getTime()) / total) * 100);
+    }
     
     useEffect(() => {
       if (current.getTime() < end.getTime()) {
@@ -49,4 +57,4 @@ const Progress_bar = ({bgcolor, height, start_time, end_time}) => {
     )
 }
  
-export default Progress_bar;
+export default ProgressBar;

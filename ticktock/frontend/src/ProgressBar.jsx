@@ -28,7 +28,7 @@ const ProgressBar = ({bgcolor, height, start_time, end_time}) => {
 
     const Parentdiv = {
         height: height,
-        width: '100%',
+        width: '90%',
         backgroundColor: 'whitesmoke',
         borderRadius: 40,
         margin: 50

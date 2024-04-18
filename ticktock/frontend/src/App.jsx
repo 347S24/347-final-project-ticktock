@@ -10,15 +10,19 @@ function App() {
   return (
     <>
       <div className="container">
-        <header>Ticktock</header>
-        <main>
-          <h1>Welcome to Ticktock, the <em>ultimate</em> progress tracker.</h1>
-          <EventForm></EventForm>
-          <h1>All Events</h1>
-          <Fetch></Fetch>
-        </main>
-        <footer>Ticktock Inc.</footer>
-      </div>
+  <header>Ticktock</header>
+  <div className="content">
+    <main>
+      <h1>Welcome to Ticktock, the <em>ultimate</em> progress tracker.</h1>
+      <EventForm></EventForm>
+      <h1>All Events</h1>
+      <Fetch></Fetch>
+    </main>
+    <footer>
+      TickTock Inc.
+    </footer>
+  </div>
+</div>
     </>
   );
 }

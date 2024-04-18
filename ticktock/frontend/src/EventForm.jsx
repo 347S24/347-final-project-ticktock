@@ -33,6 +33,8 @@ const EventForm = () => {
       });
       const jsonResponse = await response.json();
       console.log('Submit Response:', jsonResponse);
+      // Force a refresh of the page
+      window.location.reload();
       // Optionally reset the form or handle the UI changes post submission
     } catch (error) {
       console.error('Error submitting event:', error);

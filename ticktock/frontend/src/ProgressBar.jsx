@@ -1,30 +1,51 @@
 import React, { useState, useEffect } from 'react'
  
 const ProgressBar = ({bgcolor, height, start_time, end_time}) => {
-    const [progress, setProgress] = useState(0);
+    // console.log(start_time, end_time)
     const [start, setStart] = useState(new Date(start_time));
     const [end, setEnd] = useState(new Date(end_time));
     const [current, setCurrent] = useState(new Date(start_time));
-  
-    /**If the start time was in the past, update the progress and the current time to be correct */
-    if (current.getTime() < start.getTime()) {
-      const total = end.getTime() - start.getTime();
-      const newCurrent = new Date(start.getTime());
-      setCurrent(newCurrent);
-      setProgress(((newCurrent.getTime() - start.getTime()) / total) * 100);
-    }
-    
+    const [progress, setProgress] = useState(0);
+
+    // Make the first useEffect happen on page load
     useEffect(() => {
-      if (current.getTime() < end.getTime()) {
+        const now = new Date()
+        if (now.getTime() > end.getTime()) {
+            setProgress(100);
+            return;
+        }
+        if (now.getTime() < start.getTime()) {
+            setProgress(0);
+            return;
+        }
         const total = end.getTime() - start.getTime();
-        const interval = setInterval(() => {
-          const newCurrent = new Date(current.getTime() + 1000);
-          setCurrent(newCurrent);
-          setProgress(((newCurrent.getTime() - start.getTime()) / total) * 100);
-        }, 1000);
-        return () => clearInterval(interval);
-      }
-    }, [current, start, end]);
+        const current = now.getTime() - start.getTime();
+        const progress = (current / total) * 100;
+        setProgress(progress);
+        setCurrent(new Date(now));
+    }, []);
+    
+    // Make a use effect to update the progress bar from the start time to the end time
+    // Starting with the progress bar at the current position it should be based on current time
+    useEffect(() => {
+      const interval = setInterval(() => {
+          const now = new Date()
+          if (now.getTime() > end.getTime()) {
+              setProgress(100);
+              return;
+          }
+          if (now.getTime() < start.getTime()) {
+              setProgress(0);
+              return;
+          }
+          const total = end.getTime() - start.getTime();
+          const current = now.getTime() - start.getTime();
+          const progress = (current / total) * 100;
+          setProgress(progress);
+          setCurrent(new Date(now));
+      }, 1000);
+      return () => clearInterval(interval);
+  }, [start, end]);
 
     const Parentdiv = {
         height: height,
@@ -51,7 +72,7 @@ const ProgressBar = ({bgcolor, height, start_time, end_time}) => {
     return (
     <div style={Parentdiv}>
       <div style={Childdiv}>
-        <span style={progresstext}>{`${progress}%`}</span>
+        <span style={progresstext}>{`${Math.floor(progress)}%`}</span>
       </div>
     </div>
     )

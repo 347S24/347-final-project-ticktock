@@ -18,9 +18,9 @@ const Fetch = () => {
       
       {events.map((event) => (
         <div key={event.id}>
-          <h1>{event.title}</h1>
+          <h3>{event.name}</h3>
           <p>{event.description}</p>
-          <ProgressBar start_time="{event.start_time}" end_time="{event.end_time}" bgcolor="green" height="20px" />
+          <ProgressBar start_time={event.start_time} end_time={event.end_time} bgcolor="green" height="20px" />
         </div>
       ))}
     </div>

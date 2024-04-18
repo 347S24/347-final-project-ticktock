@@ -25,6 +25,21 @@ header {
   font-size: 2rem;
 }
 
+.container h2 {
+  font-family: 'Courier New', Courier, monospace;
+  color: blueviolet;
+  padding-left: 3rem;
+  font-size: 1.8rem;
+
+}
+
+.container h3 {
+  font-family: 'Courier New', Courier, monospace;
+  color: blueviolet;
+  padding-left: 3rem;
+  font-size: 1.5rem;
+}
+
 .container p {
   font-family: 'Courier New', Courier, monospace;
   padding-left: 3rem;
@@ -63,6 +78,7 @@ header {
 
 main {
   flex: 1 0 auto;
+  padding-bottom: 5rem;
 }
 
 footer {

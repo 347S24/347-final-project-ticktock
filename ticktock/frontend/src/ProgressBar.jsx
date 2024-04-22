@@ -47,6 +47,9 @@ const ProgressBar = ({bgcolor, height, start_time, end_time}) => {
       return () => clearInterval(interval);
   }, [start, end]);
 
+
+  // Go through each subevent and place it on the progress bar based on start time
+
     const Parentdiv = {
         height: height,
         width: '90%',

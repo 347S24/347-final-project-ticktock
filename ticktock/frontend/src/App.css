@@ -40,6 +40,20 @@ header {
   font-size: 1.5rem;
 }
 
+.container h4 {
+  font-family: 'Courier New', Courier, monospace;
+  color: blueviolet;
+  padding-left: 3rem;
+  font-size: 1.2rem;
+}
+
+.container h5 {
+  font-family: 'Courier New', Courier, monospace;
+  color: blueviolet;
+  padding-left: 3rem;
+  font-size: 1rem;
+}
+
 .container p {
   font-family: 'Courier New', Courier, monospace;
   padding-left: 3rem;

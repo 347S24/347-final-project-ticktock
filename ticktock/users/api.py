@@ -3,6 +3,7 @@ from django.shortcuts import get_object_or_404
 from ninja import NinjaAPI, Schema
 from .models import Event
 from pydantic import BaseModel
+from typing import List
 
 api = NinjaAPI()
 
@@ -11,8 +12,7 @@ class EventOut(Schema):
     description: str
     start_time: datetime.datetime
     end_time: datetime.datetime
-
-from typing import List
+    subevents: List["EventOut"]
 
 @api.get("/event/{event_id}", response=EventOut)
 def get_event(request, event_id: str):

@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react';
 import ProgressBar from './ProgressBar';
 import Subevent from './Subevent';
-
+import SubEventForm from './SubEventForm';
+import { Button } from '@material-ui/core';
 const Fetch = () => {
   const [events, setEvents] = useState([]);
   var id = 0;
@@ -25,7 +26,9 @@ const Fetch = () => {
           <p>{event.description}</p>
           console.log(event.subevents)
           <ProgressBar id={id} start_time={event.start_time} end_time={event.end_time} bgcolor="green" height="20px"/>
-          {event.subevents.length > 0 ? <Subevent subevents={event.subevents}/> : null}</div>
+          {event.subevents.length > 0 ? <Subevent subevents={event.subevents}/> : null}
+          <SubEventForm></SubEventForm>
+          </div>
       ))}
     </div>
   );

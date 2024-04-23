@@ -3,7 +3,7 @@ import reactLogo from './assets/react.svg'
 import djangoLogo from './assets/django.svg'
 import viteLogo from './assets/vite.svg'
 import './App.css'
-
+//HELLO :D
 // function App({username}) {
 function App() {
   console.log("username is ", username);

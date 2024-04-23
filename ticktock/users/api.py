@@ -1,7 +1,7 @@
 import datetime
 from django.shortcuts import get_object_or_404
 from ninja import NinjaAPI, Schema
-from .models import Event
+from .models import Event, User
 from pydantic import BaseModel
 from typing import List
 
@@ -12,7 +12,8 @@ class EventOut(Schema):
     description: str
     start_time: datetime.datetime
     end_time: datetime.datetime
-    subevents: List["EventOut"]
+    subevents: List["EventOut"] = None
+    username: str = None
 
 @api.get("/event/{event_id}", response=EventOut)
 def get_event(request, event_id: str):
@@ -45,6 +46,7 @@ def update_event(request, event_id: str, name: str, description: str, start_time
 
 @api.post("/event")
 def create_event(request, event: EventOut):
-    event = Event(name=event.name, description=event.description, start_time=event.start_time, end_time=event.end_time)
+    user = User.objects.get(username=event.username)
+    event = Event(name=event.name, description=event.description, start_time=event.start_time, end_time=event.end_time, user=user)
     event.save()
     return {"success": True}

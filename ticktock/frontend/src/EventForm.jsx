@@ -19,12 +19,13 @@ const EventForm = () => {
       description: description,
       start_time: startTime,
       end_time: endTime,
+      username
     };
 
     // Posting data to the backend
     try {
       console.log(JSON.stringify(eventData))
-      const response = await fetch('http://127.0.0.1:8000/users/api/event', {
+      const response = await fetch('/users/api/event', {
         method: "POST",
         headers: {
           'Content-Type': 'application/json',

@@ -34,7 +34,7 @@ class Event(models.Model):
     start_time = models.DateTimeField(null=True, blank=True)
     end_time = models.DateTimeField(null=True, blank=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    subevents = models.ManyToManyField('Event', blank=True, default=None)
+    subevents = models.ManyToManyField('Event',null=True, blank=True, default=None)
     is_subevent = models.BooleanField(default=False)
 
     def __str__(self):

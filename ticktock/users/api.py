@@ -7,13 +7,25 @@ from typing import List
 
 api = NinjaAPI()
 
-class EventOut(Schema):
+class EventIn(Schema):
     name: str
     description: str
     start_time: datetime.datetime
     end_time: datetime.datetime
     subevents: List["EventOut"] = None
     username: str = None
+
+class UserOut(Schema):
+    username: str
+    id: int
+    
+class EventOut(Schema):
+    name: str
+    description: str
+    start_time: datetime.datetime
+    end_time: datetime.datetime
+    subevents: List["EventOut"] = None
+    user: UserOut
 
 @api.get("/event/{event_id}", response=EventOut)
 def get_event(request, event_id: str):
@@ -45,7 +57,7 @@ def update_event(request, event_id: str, name: str, description: str, start_time
     return {"success": True}
 
 @api.post("/event")
-def create_event(request, event: EventOut):
+def create_event(request, event: EventIn):
     user = User.objects.get(username=event.username)
     event = Event(name=event.name, description=event.description, start_time=event.start_time, end_time=event.end_time, user=user)
     event.save()

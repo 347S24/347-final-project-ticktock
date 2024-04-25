@@ -66,7 +66,7 @@ const Fetch = () => {
             
             <ProgressBar id={event.id} start_time={event.start_time} end_time={event.end_time} bgcolor="green" height="20px" />
             {event.subevents.length > 0 ? <Subevent subevents={event.subevents} /> : null}
-            <SubEventForm />
+            <SubEventForm parentEventId={event.id} />
           </div>
         );
       })}

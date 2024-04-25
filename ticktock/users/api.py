@@ -12,8 +12,9 @@ class EventIn(Schema):
     description: str
     start_time: datetime.datetime
     end_time: datetime.datetime
-    subevents: List["EventOut"] = None
+    parent_event_id: int = None  # Add parent_event_id field
     username: str = None
+
 
 class UserOut(Schema):
     username: str
@@ -58,7 +59,17 @@ def update_event(request, event_id: str, name: str, description: str, start_time
 
 @api.post("/event")
 def create_event(request, event: EventIn):
-    user = User.objects.get(username=event.username)
-    event = Event(name=event.name, description=event.description, start_time=event.start_time, end_time=event.end_time, user=user)
-    event.save()
-    return {"success": True}
+    if event.parent_event_id:
+        # Create a subevent
+        parent_event = Event.objects.get(id=event.parent_event_id)
+        subevent = Event(name=event.name, description=event.description, start_time=event.start_time, end_time=event.end_time, user=parent_event.user, is_subevent=True)
+        subevent.save()
+        parent_event.subevents.add(subevent)
+        parent_event.save()
+        return {"success": True}
+    else:
+        # Create a regular event
+        user = User.objects.get(username=event.username)
+        event_obj = Event(name=event.name, description=event.description, start_time=event.start_time, end_time=event.end_time, user=user)
+        event_obj.save()
+        return {"success": True}

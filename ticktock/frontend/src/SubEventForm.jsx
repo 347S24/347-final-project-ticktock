@@ -1,49 +1,43 @@
 import { Button, TextField, Container, Typography } from '@material-ui/core';
 import React, { useState } from 'react';
 
-const SubEventForm = () => {
-  // your state and handleSubmit function...
-  // State for event form
+const SubEventForm = ({ parentEventId }) => {
+  // State for subevent form
   const [eventName, setEventName] = useState('');
   const [description, setDescription] = useState('');
   const [startTime, setStartTime] = useState(new Date());
   const [endTime, setEndTime] = useState(new Date());
 
-  // State for a counter (from the first version of App)
-  const [count, setCount] = useState(0);
-
   const handleSubmit = async (event) => {
     event.preventDefault();
-    const eventData = {
+    const subeventData = {
       name: eventName,
       description: description,
       start_time: startTime,
       end_time: endTime,
+      parent_event_id: parentEventId, // Include the parent_event_id
     };
 
-    // Posting data to the backend
     try {
-      console.log(JSON.stringify(eventData))
       const response = await fetch('http://127.0.0.1:8000/users/api/event', {
-        method: "PUT",
+        method: "POST", // Use POST to create a new subevent
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(eventData),
+        body: JSON.stringify(subeventData),
       });
       const jsonResponse = await response.json();
       console.log('Submit Response:', jsonResponse);
-      // Force a refresh of the page
       window.location.reload();
-      // Optionally reset the form or handle the UI changes post submission
     } catch (error) {
-      console.error('Error submitting event:', error);
+      console.error('Error submitting subevent:', error);
     }
   };
+
   return (
     <Container>
       <Typography variant="h4" align="center">Submit Subevent</Typography>
-      <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'row', flexWrap: 'nowrap', justifyContent: 'space-between' }}>
+      <form onSubmit={handleSubmit}>
         <TextField
           margin="normal"
           label="Event Name"
@@ -62,9 +56,7 @@ const SubEventForm = () => {
           margin="normal"
           label="Start Time"
           type="datetime-local"
-          InputLabelProps={{
-            shrink: true,
-          }}
+          InputLabelProps={{ shrink: true }}
           value={startTime}
           onChange={e => setStartTime(e.target.value)}
           required
@@ -73,9 +65,7 @@ const SubEventForm = () => {
           margin="normal"
           label="End Time"
           type="datetime-local"
-          InputLabelProps={{
-            shrink: true,
-          }}
+          InputLabelProps={{ shrink: true }}
           value={endTime}
           onChange={e => setEndTime(e.target.value)}
           required

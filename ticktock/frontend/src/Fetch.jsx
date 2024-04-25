@@ -41,6 +41,23 @@ const Fetch = () => {
     return statusOrder[getEventStatus(a)] - statusOrder[getEventStatus(b)];
   });
 
+  // Function to handle event deletion
+  const handleDelete = async (eventId) => {
+    try {
+      const response = await fetch(`/users/api/event/${eventId}`, {
+        method: 'DELETE',
+      });
+      if (response.ok) {
+        // Filter out the deleted event from the events list
+        setEvents(events.filter((event) => event.id !== eventId));
+      } else {
+        console.error('Failed to delete event');
+      }
+    } catch (error) {
+      console.error('Error deleting event:', error);
+    }
+  };
+
   return (
     <div id="progress-bar">
       {sortedEvents.map((event) => {
@@ -51,22 +68,19 @@ const Fetch = () => {
 
         return (
           <div key={event.id}>
-            <h3>{event.name}</h3>
+            <h1>
+              {event.name} 
+              <Button onClick={() => handleDelete(event.id)} variant="contained" color="secondary">
+                Delete
+              </Button>
+            </h1>
             <p>{event.description}</p>
             <p>
-              <strong>Start Date {startDate.toLocaleDateString('en-US', { year: 'numeric', month: '2-digit', day: '2-digit' })} Time: {startDate.toLocaleTimeString('en-US', { hour12: false, hour: '2-digit', minute: '2-digit', second: '2-digit' })}</strong>
+              {/* Display other event details */}
             </p>
-            <p>Current Date {currentDate.toLocaleDateString('en-US', { year: 'numeric', month: '2-digit', day: '2-digit' })} Time: {currentDate.toLocaleTimeString('en-US', { hour12: false, hour: '2-digit', minute: '2-digit', second: '2-digit' })}</p>
-            <p>
-              <strong>End Date {endDate.toLocaleDateString('en-US', { year: 'numeric', month: '2-digit', day: '2-digit' })} Time: {endDate.toLocaleTimeString('en-US', { hour12: false, hour: '2-digit', minute: '2-digit', second: '2-digit' })}</strong>
-            </p>
-            {status === 'startingSoon' && <p>Status: Starting Soon...</p>}
-            {status === 'ongoing' && <p>Status: Ongoing</p>}
-            {status === 'finished' && <p>Status: Finished!</p>}
-            
             <ProgressBar id={event.id} start_time={event.start_time} end_time={event.end_time} bgcolor="green" height="20px" />
             {event.subevents.length > 0 ? <Subevent subevents={event.subevents} /> : null}
-            <SubEventForm />
+            <SubEventForm subevents={event.subevents} />
           </div>
         );
       })}

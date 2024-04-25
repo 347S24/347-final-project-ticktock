@@ -12,8 +12,10 @@ class EventIn(Schema):
     description: str
     start_time: datetime.datetime
     end_time: datetime.datetime
-    parent_event_id: int = None  # Add parent_event_id field
+    subevents: List["EventOut"] = None  # Include subevents field
     username: str = None
+    parent_event_id: int = None  # Include parent_event_id field
+
 
 
 class UserOut(Schema):

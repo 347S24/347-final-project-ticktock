@@ -7,7 +7,6 @@ const EventForm = () => {
   const [eventName, setEventName] = useState('');
   const [description, setDescription] = useState('');
   // const [startTime, setStartTime] = useState(new Date());
-
   // const [endTime, setEndTime] = useState(new Date());
   const [startTime, setStartTime] = useState(new Date().toISOString().slice(0, -8));
   const [endTime, setEndTime] = useState(new Date().toISOString().slice(0, -8));
@@ -46,9 +45,9 @@ const EventForm = () => {
   };
   return (
     <Container maxWidth="sm">
-      <Typography variant="h4" align="center">Submit Event</Typography>
+      {/* <Typography variant="h4" align="center">Submit Event</Typography> */}
       <form onSubmit={handleSubmit}>
-      <h1>Create Event</h1>
+        <h2>Create Event</h2>
         <TextField
           fullWidth
           margin="normal"
@@ -89,9 +88,11 @@ const EventForm = () => {
           onChange={e => setEndTime(e.target.value)}
           required
         />
-        <Button variant="contained" color="primary" type="submit">
-          Submit Event
-        </Button>
+        <div style={{ display: 'flex', justifyContent: 'center' }}>
+          <Button variant="contained" color="primary" type="submit">
+            Submit Event
+          </Button>
+        </div>
       </form>
     </Container>
   );

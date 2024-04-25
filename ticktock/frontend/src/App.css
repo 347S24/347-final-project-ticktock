@@ -9,53 +9,68 @@
 
 
 header {
-  padding: 1em;
+  padding: .75em;
   color: white;
   text-align: left;
-  background-color: mediumpurple;
-  font-family: 'Courier New', Courier, monospace;
+  background-color: #003249;
+  font-family:Georgia, 'Times New Roman', Times, serif;
   width: 100%;
+  font-size: large;
   /* Ensure the header spans the entire width */
 }
 
 .container h1 {
-  font-family: 'Courier New', Courier, monospace;
-  color: blueviolet;
-  padding-left: 3rem;
+  font-family:Georgia, 'Times New Roman', Times, serif;
+  color: #003249;
+  text-align: center;
   font-size: 2rem;
+  padding: 1em;
 }
 
 .container h2 {
-  font-family: 'Courier New', Courier, monospace;
-  color: blueviolet;
-  padding-left: 3rem;
+  font-family:Georgia, 'Times New Roman', Times, serif;
+  color: #4D9DE0;
   font-size: 1.8rem;
-
+  text-align: center;
 }
 
-.container h3 {
-  font-family: 'Courier New', Courier, monospace;
+.eventList h1 {
+  font-family:Georgia, 'Times New Roman', Times, serif;
+  color: #003249;
+  text-align: center;
+  font-size: 2rem;
+  padding: 1em;
+  padding-top: 4em;
+}
+
+
+/* come back to later */
+
+
+
+.eventList h3 {
+  font-family:Georgia, 'Times New Roman', Times, serif;
   color: blueviolet;
   padding-left: 3rem;
   font-size: 1.5rem;
 }
 
-.container h4 {
-  font-family: 'Courier New', Courier, monospace;
+.eventList h4 {
+  font-family:Georgia, 'Times New Roman', Times, serif;
   color: blueviolet;
   padding-left: 3rem;
   font-size: 1.2rem;
 }
 
-.container h5 {
-  font-family: 'Courier New', Courier, monospace;
+.eventList h5 {
+  font-family:Georgia, 'Times New Roman', Times, serif;
   color: blueviolet;
   padding-left: 3rem;
   font-size: 1rem;
 }
 
 .container p {
-  font-family: 'Courier New', Courier, monospace;
+  font-family:Georgia, 'Times New Roman', Times, serif;
   padding-left: 3rem;
   font-size: 1.5rem;
   color: mediumpurple;
@@ -69,9 +84,22 @@ header {
   bottom: 0;
   width: 100%;
   text-align: left;
-  background-color: mediumpurple;
-  font-family: 'Courier New', Courier, monospace;
+  background-color: #003249;
+  font-family:Georgia, 'Times New Roman', Times, serif;
 }
+
+.container button {
+  background-color: #4D9DE0;
+  font-family:Georgia, 'Times New Roman', Times, serif;
+  align-items: center;
+}
+
+.container button:hover {
+  background-color:#E2AFDE;
+  transition: 0.7s;
+}
+
+
 
 .login,
 .logout {

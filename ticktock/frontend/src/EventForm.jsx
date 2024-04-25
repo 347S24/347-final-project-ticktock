@@ -6,8 +6,11 @@ const EventForm = () => {
   // State for event form
   const [eventName, setEventName] = useState('');
   const [description, setDescription] = useState('');
-  const [startTime, setStartTime] = useState(new Date());
-  const [endTime, setEndTime] = useState(new Date());
+  // const [startTime, setStartTime] = useState(new Date());
+
+  // const [endTime, setEndTime] = useState(new Date());
+  const [startTime, setStartTime] = useState(new Date().toISOString().slice(0, -8));
+  const [endTime, setEndTime] = useState(new Date().toISOString().slice(0, -8));
 
   // State for a counter (from the first version of App)
   const [count, setCount] = useState(0);
@@ -57,7 +60,7 @@ const EventForm = () => {
         <TextField
           fullWidth
           margin="normal"
-          label="Description"
+          label="Event Description"
           value={description}
           onChange={e => setDescription(e.target.value)}
           required

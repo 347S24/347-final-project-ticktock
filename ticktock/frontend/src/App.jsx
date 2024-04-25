@@ -11,7 +11,6 @@ function App() {
     <>
       <div className="container">
         <header>Ticktock</header>
-        <div className="content">
           <main>
             <h1>Welcome to Ticktock, the <em>ultimate</em> progress tracker.</h1>
             <EventForm></EventForm>
@@ -21,9 +20,8 @@ function App() {
             </div>
           </main>
           <footer>
-            TickTock Inc.
+            Team ATE Inc.
           </footer>
-        </div>
       </div>
     </>
   );

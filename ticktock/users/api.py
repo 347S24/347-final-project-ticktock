@@ -1,17 +1,31 @@
 import datetime
 from django.shortcuts import get_object_or_404
 from ninja import NinjaAPI, Schema
-from .models import Event
+from .models import Event, User
+from pydantic import BaseModel
+from typing import List
 
 api = NinjaAPI()
 
+class EventIn(Schema):
+    name: str
+    description: str
+    start_time: datetime.datetime
+    end_time: datetime.datetime
+    subevents: List["EventOut"] = None
+    username: str = None
+
+class UserOut(Schema):
+    username: str
+    id: int
+    
 class EventOut(Schema):
     name: str
     description: str
     start_time: datetime.datetime
     end_time: datetime.datetime
-
-from typing import List
+    subevents: List["EventOut"] = None
+    user: UserOut
 
 @api.get("/event/{event_id}", response=EventOut)
 def get_event(request, event_id: str):
@@ -24,6 +38,7 @@ def list_events(request):
     qs = Event.objects.all().filter(is_subevent=False)
     return qs
 
+#hi
 @api.delete("/event/{event_id}")
 def delete_event(request, event_id: str):
     event_id = str(event_id)
@@ -43,7 +58,8 @@ def update_event(request, event_id: str, name: str, description: str, start_time
     return {"success": True}
 
 @api.post("/event")
-def add_event(name: str, description: str, start_time: datetime.datetime, end_time: datetime.datetime):
-    event = Event(name=name, description=description, start_time=start_time, end_time=end_time)
+def create_event(request, event: EventIn):
+    user = User.objects.get(username=event.username)
+    event = Event(name=event.name, description=event.description, start_time=event.start_time, end_time=event.end_time, user=user)
     event.save()
-    return event
+    return {"success": True}

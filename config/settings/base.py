@@ -149,6 +149,7 @@ MIDDLEWARE = [
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
     "allauth.account.middleware.AccountMiddleware",
+    'ticktock.middleware.CorsMiddleware',
 ]
 
 # STATIC
@@ -291,3 +292,4 @@ SOCIALACCOUNT_FORMS = {"signup": "ticktock.users.forms.UserSocialSignupForm"}
 
 # Your stuff...
 # ------------------------------------------------------------------------------
+CORS_ALLOW_ALL_ORIGINS = True

@@ -38,6 +38,7 @@ def list_events(request):
     qs = Event.objects.all().filter(is_subevent=False)
     return qs
 
+#hi
 @api.delete("/event/{event_id}")
 def delete_event(request, event_id: str):
     event_id = str(event_id)

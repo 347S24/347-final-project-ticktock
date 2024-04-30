@@ -46,15 +46,11 @@ LOCALE_PATHS = [str(BASE_DIR / "locale")]
 # ------------------------------------------------------------------------------
 # https://docs.djangoproject.com/en/dev/ref/settings/#databases
 
-DATABASES={
-  'default': {
-    'NAME': 'ticktockdb',
-    'USER': '',
-    'PASSWORD': '',
-    'HOST': '',
-    'PORT': '',
-    'ENGINE': 'django.db.backends.postgresql'
-  }
+DATABASES = {
+    "default": env.db(
+        "DATABASE_URL",
+        default="postgres:///ticktock",
+    ),
 }
 DATABASES["default"]["ATOMIC_REQUESTS"] = True
 # https://docs.djangoproject.com/en/stable/ref/settings/#std:setting-DEFAULT_AUTO_FIELD

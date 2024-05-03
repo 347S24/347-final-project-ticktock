@@ -32,24 +32,28 @@ const Fetch = () => {
   };
 
   const handleDelete = async (eventId) => {
+    eventId = String(eventId); // Convert eventId to string
+    console.log(eventId);
     try {
       const response = await fetch(`/users/api/event/${eventId}`, {
         method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json',
+        },
       });
-      if (response.ok) {
-        setEvents(events.filter((event) => event.id !== eventId));
-      } else {
-        console.error('Failed to delete event');
-      }
+      // Handle response
     } catch (error) {
       console.error('Error deleting event:', error);
     }
   };
+  
+  
 
   return (
-    <div className="cardContainer">
-      {events.map((event) => {
+    <div id="progress-bar">
+      {events.map((event, i) => {
         const startDate = new Date(event.start_time);
+        console.log(event)
         const endDate = new Date(event.end_time);
         const currentDate = new Date();
         const status = getEventStatus(event);
@@ -77,7 +81,7 @@ const Fetch = () => {
               <ProgressBar id={event.id} start_time={event.start_time} end_time={event.end_time} bgcolor="#6DD3CE" height="20px" />
               <Subevent subevents={event.subevents} />
               <SubEventForm subevents={event.subevents} />
-              <Button onClick={() => handleDelete(event.id)} variant="contained" color="secondary">
+              <Button onClick={() => handleDelete(event.id) && setEvents(events.toSpliced(i, 1))} variant="contained" color="secondary">
                 Delete
               </Button>
             </CardContent>

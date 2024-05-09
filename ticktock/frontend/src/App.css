@@ -6,7 +6,7 @@
   flex-direction: column;
   min-height: 100vh;
   width: 100vw;
-  background-color: #FDFDF1;
+  background-color: rgb(237, 231, 250);
   font-family:Georgia, 'Times New Roman', Times, serif;
 }
 
@@ -14,9 +14,9 @@
 /* parts of page */
 header {
   padding: .75em;
-  color: #275dad;
+  color: #ffffff;
   text-align: left;
-  background-color: #B3B7EE;
+  background-color: #8f64f5;
   font-family:Georgia, 'Times New Roman', Times, serif;
   width: 100%;
   font-size: large;
@@ -31,13 +31,13 @@ header {
 
 footer {
   flex-shrink: 0;
-  color: #275dad;
+  color: #ffffff;
   padding: 1em;
   position: fixed;
   bottom: 0;
   width: 100%;
   text-align: left;
-  background-color: #B3B7EE;
+  background-color: #8f64f5;
 }
 
 /* parts of the event form and headers */
@@ -48,7 +48,7 @@ main {
 
 .container h1 {
   font-family:Georgia, 'Times New Roman', Times, serif;
-  color: #275DAD;
+  color: #494d5f;
   text-align: center;
   font-size: 2rem;
   padding: 1em;
@@ -56,36 +56,26 @@ main {
 
 .container h2 {
   font-family:Georgia, 'Times New Roman', Times, serif;
-  color: #275DAD;
+  color: #6DD3CE;
   font-size: 1.8rem;
   text-align: center;
   padding: .5em;
 }
 
 .container button {
-  background-color: #275DAD;
+  background-color: #6DD3CE;
   font-family:Georgia, 'Times New Roman', Times, serif;
   align-items: center;
   margin-top: 1em;
 }
 
 .container button:hover {
-  background-color:#B3B7EE;
+  background-color:#8f64f5;
   transition: 0.7s;
 }
 
-
-.eventList h1{
-  color: #275DAD;
-}
-
-
-
-/* review? */
-
-
 .eventList h1 {
-  color: #275dad;
+  color: #494d5f;
   text-align: center;
   font-size: 2rem;
   padding: 1em;
@@ -93,29 +83,62 @@ main {
 }
 
 
+.cardContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.card {
+  width: calc(90%); /* Adjust the width as needed */
+  margin: 1.5em;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.cardContent {
+  padding: 20px;
+}
+
+.cardTitle {
+  font-size: 1.5em;
+  margin-bottom: 10px;
+}
+
+.cardDescription {
+  margin-bottom: 10px;
+}
+
+.cardDetails {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.cardStatus {
+  font-weight: bold;
+}
+
 
 
 /* come back to later */
-
-
-
 .eventList h3 {
   font-family:Georgia, 'Times New Roman', Times, serif;
-  color: blueviolet;
+  color: #494d5f;
   padding-left: 3rem;
   font-size: 1.5rem;
 }
 
 .eventList h4 {
   font-family:Georgia, 'Times New Roman', Times, serif;
-  color: blueviolet;
+  color: #494d5f;
   padding-left: 3rem;
   font-size: 1.2rem;
 }
 
 .eventList h5 {
   font-family:Georgia, 'Times New Roman', Times, serif;
-  color: blueviolet;
+  color: #494d5f;
   padding-left: 3rem;
   font-size: 1rem;
 }
@@ -124,5 +147,5 @@ main {
   font-family:Georgia, 'Times New Roman', Times, serif;
   padding-left: 3rem;
   font-size: 1.5rem;
-  color: mediumpurple;
+  color: #494d5f;
 }

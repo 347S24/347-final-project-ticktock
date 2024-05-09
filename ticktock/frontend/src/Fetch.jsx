@@ -3,7 +3,7 @@ import ProgressBar from './ProgressBar';
 import Subevent from './Subevent';
 import SubEventForm from './SubEventForm';
 import { Button, Card, CardContent, Typography } from '@material-ui/core';
-import './index.css' 
+import './App.css'
 
 const Fetch = () => {
   const [events, setEvents] = useState([]);
@@ -32,53 +32,56 @@ const Fetch = () => {
   };
 
   const handleDelete = async (eventId) => {
+    eventId = String(eventId); // Convert eventId to string
+    console.log(eventId);
     try {
       const response = await fetch(`/users/api/event/${eventId}`, {
         method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json',
+        },
       });
-      if (response.ok) {
-        setEvents(events.filter((event) => event.id !== eventId));
-      } else {
-        console.error('Failed to delete event');
-      }
+      // Handle response
     } catch (error) {
       console.error('Error deleting event:', error);
     }
   };
+  
+  
 
   return (
     <div id="progress-bar">
-      {events.map((event) => {
+      {events.map((event, i) => {
         const startDate = new Date(event.start_time);
+        console.log(event)
         const endDate = new Date(event.end_time);
         const currentDate = new Date();
         const status = getEventStatus(event);
 
         return (
-          <Card key={event.id} style={{ marginBottom: '20px' }}>
-            <CardContent>
-              <Typography variant="h5" component="h2">
+          <Card key={event.id} className="card">
+            <CardContent className="cardContent">
+              <Typography variant="h5" component="h2" className="cardTitle">
                 {event.name}
               </Typography>
-              <Typography variant="body1">
+              <Typography variant="body1" className="cardDescription">
                 {event.description}
               </Typography>
-              <Typography variant="body2">
-                <strong>Start Date:</strong> {startDate.toLocaleString()}
+              <div className="cardDetails">
+                <Typography variant="body2">
+                  <strong>Start Date:</strong> {startDate.toLocaleString()}
+                </Typography>
+                <Typography variant="body2">
+                  <strong>End Date:</strong> {endDate.toLocaleString()}
+                </Typography>
+              </div>
+              <Typography variant="body2" className="cardStatus">
+                <strong>Status:</strong> {status === 'startingSoon' ? 'Starting Soon...' : status === 'ongoing' ? 'Ongoing' : 'Finished!'}
               </Typography>
-              <Typography variant="body2">
-                <strong>Current Date:</strong> {currentDate.toLocaleString()}
-              </Typography>
-              <Typography variant="body2">
-                <strong>End Date:</strong> {endDate.toLocaleString()}
-              </Typography>
-              {status === 'startingSoon' && <Typography variant="body2">Status: Starting Soon...</Typography>}
-              {status === 'ongoing' && <Typography variant="body2">Status: Ongoing</Typography>}
-              {status === 'finished' && <Typography variant="body2">Status: Finished!</Typography>}
-              <ProgressBar id={event.id} start_time={event.start_time} end_time={event.end_time} bgcolor="green" height="20px" />
-              {event.subevents.length > 0 && <Subevent subevents={event.subevents} />}
-              <SubEventForm subevents={event.subevents} />
-              <Button onClick={() => handleDelete(event.id)} variant="contained" color="secondary">
+              <ProgressBar id={event.id} start_time={event.start_time} end_time={event.end_time} bgcolor="#6DD3CE" height="20px" />
+              {/* <Subevent subevents={event.subevents} />
+              <SubEventForm subevents={event.subevents} /> */}
+              <Button onClick={() => handleDelete(event.id) && setEvents(events.toSpliced(i, 1))} variant="contained" color="secondary">
                 Delete
               </Button>
             </CardContent>
@@ -90,3 +93,4 @@ const Fetch = () => {
 };
 
 export default Fetch;
+

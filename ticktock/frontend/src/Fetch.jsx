@@ -79,8 +79,8 @@ const Fetch = () => {
                 <strong>Status:</strong> {status === 'startingSoon' ? 'Starting Soon...' : status === 'ongoing' ? 'Ongoing' : 'Finished!'}
               </Typography>
               <ProgressBar id={event.id} start_time={event.start_time} end_time={event.end_time} bgcolor="#6DD3CE" height="20px" />
-              <Subevent subevents={event.subevents} />
-              <SubEventForm subevents={event.subevents} />
+              {/* <Subevent subevents={event.subevents} />
+              <SubEventForm subevents={event.subevents} /> */}
               <Button onClick={() => handleDelete(event.id) && setEvents(events.toSpliced(i, 1))} variant="contained" color="secondary">
                 Delete
               </Button>
